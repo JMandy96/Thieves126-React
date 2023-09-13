@@ -1,17 +1,15 @@
+import { useState } from "react"
+
 const Message = () => {
-
-  const name = ''
-
-  if (name){
-    return (
-      <>
-        <h3>{name}</h3>
-      </>
-    )
+  const [games, setGames] = useState(['FFX', 'Apex Legends', 'Secret of Mana', 'Legend of Dragoon'])
+  const handleClick = () => {
+    setGames([...games, 'Gears of War'])
+    console.log(games)
   }
   return (
     <>
-      <h3>Hello, Thieves</h3>
+      {games.map((game) => game === 'Apex Legends' ? 'RE4' : game)}
+      <button onClick={handleClick}>Click</button>
     </>
   )
 }

@@ -1,13 +1,18 @@
-import ListGroup from "./components/ListGroup"
-import Message from "./components/Message"
+import { useState } from "react"
+import Cart from "./components/Cart"
+import Nav from "./components/Nav"
 
 const App = () => {
-  const students = ["sam", "jake", "justin", "omar", "oackland", "mitchell"];
+  const [cart, setCart] = useState(['TV', 'Computer', 'Apple Watch', 'Glasses'])
+
+  const onClear = () => {
+    setCart([])
+  }
+
   return (
     <>
-      <h1>Thieves 126: Intro to React</h1>
-      <Message/>
-      <ListGroup students={students} heading="Thieves Students" age={12}/>
+      <Nav cartItemsCount={cart.length}/>
+      <Cart cartItems={cart} onClear={onClear} />
     </>
   )
 }

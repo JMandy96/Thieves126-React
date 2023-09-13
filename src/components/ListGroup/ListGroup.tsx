@@ -1,4 +1,6 @@
 import { useState } from "react"
+import "./ListGroup.css"
+import { BsCartCheck } from "react-icons/bs"
 
 interface Props {
     students: string[]
@@ -10,7 +12,8 @@ const ListGroup = ({ heading, students, age }: Props) => {
     const [selectedIdx, setSelectedIdx] = useState(-1)
     return (
         <>
-            <h1>{heading}</h1>
+        
+        <h1 className="list-group-heading">{heading}<BsCartCheck/></h1>
             {students.length === 0 && <h1>No students</h1>}
             <ul className="list-group">
                 {students.map((name, idx) => (
