@@ -1,9 +1,9 @@
-import Form from "./components/Form/Form"
+import PokemonData from "./components/PokemonData/PokemonData"
 
 const App = () => {
   return (
     <>
-      <Form/>
+      <PokemonData/>
     </>
   )
 }
