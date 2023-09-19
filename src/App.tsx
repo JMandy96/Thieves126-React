@@ -1,10 +1,33 @@
-import PokemonData from "./components/PokemonData/PokemonData"
+import Nav from "./components/Nav/Nav";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Register from "./views/Register";
+import Login from "./views/Login";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./views/Home";
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: "#b94b4b",
+            light: "#dda1a5",
+            dark: "#99403c",
+        },
+    },
+});
 
 const App = () => {
-  return (
-    <>
-      <PokemonData/>
-    </>
-  )
-}
-export default App
+    return (
+        <>
+            <BrowserRouter>
+                <ThemeProvider theme={theme}>
+                    <Routes>
+                        <Route path="/" element={<Home/>} />
+                        <Route path="/login" element={<Login/>} />
+                        <Route path="/register" element={<Register/>} />
+                    </Routes>
+                </ThemeProvider>
+            </BrowserRouter>
+        </>
+    );
+};
+export default App;
