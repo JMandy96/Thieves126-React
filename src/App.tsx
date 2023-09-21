@@ -4,6 +4,8 @@ import Register from "./views/Register";
 import Login from "./views/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./views/Home";
+import PokemonData from "./views/PokemonData/PokemonData";
+import Team from "./views/Team";
 
 const theme = createTheme({
     palette: {
@@ -24,6 +26,8 @@ const App = () => {
                         <Route path="/" element={<Home/>} />
                         <Route path="/login" element={<Login/>} />
                         <Route path="/register" element={<Register/>} />
+                        <Route path="/pokemonFinder" element={<PokemonData/>}/>
+                        <Route path="/team" element={<Team/>}/>
                     </Routes>
                 </ThemeProvider>
             </BrowserRouter>

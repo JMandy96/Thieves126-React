@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import Nav from "../../components/Nav/Nav";
+import { doc, setDoc } from "firebase/firestore";
+import { auth, db } from "../../firebase";
 
 interface IPokemon {
     name: string;
@@ -35,8 +38,17 @@ const PokemonData = () => {
         }
     };
 
+    const catchPokemon = async () => {
+        if (auth.currentUser && pokemon.name) {
+            const userId = auth.currentUser.uid
+            await setDoc(doc(db, "users", userId, "team", pokemon.name), pokemon);
+            alert(`Caught ${pokemon.name}`)
+        }
+    }
+
     return (
         <>
+            <Nav/>
             <h1 className="text-center">Pokemon Finder</h1>
             <input
                 className="d-block mx-auto"
@@ -50,6 +62,7 @@ const PokemonData = () => {
                     <h5 className="card-title">{pokemon.name}</h5>
                     {pokemon.abilities.map((ability, idx) => <li key={idx}>{ability}</li>)}
                 </div>
+                <button onClick={catchPokemon}>Catch</button>
             </div>
             }
         </>
